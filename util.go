@@ -15,10 +15,8 @@ func callerPath() (string, error) {
 	return p, nil
 }
 
-// ReadFile reads the named file and returns the contents.
-// A successful call returns err == nil, not err == EOF.
-// Because ReadFile reads the whole file, it does not treat an EOF from Read
-// as an error to be reported.
+// ReadFile reads the named file with caller file path, and
+// call os.ReadFile to read content
 func ReadFile(name string) ([]byte, error) {
 	p, err := callerPath()
 	if err != nil {
@@ -28,10 +26,8 @@ func ReadFile(name string) ([]byte, error) {
 	return os.ReadFile(filepath.Join(basePath, name))
 }
 
-// Open opens the named file for reading. If successful, methods on
-// the returned file can be used for reading; the associated file
-// descriptor has mode O_RDONLY.
-// If there is an error, it will be of type *PathError.
+// Open opens the named file for reading with caller file path,
+// and call os.Open to construct *os.File
 func Open(name string) (*os.File, error) {
 	p, err := callerPath()
 	if err != nil {
