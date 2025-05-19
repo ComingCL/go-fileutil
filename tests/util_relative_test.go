@@ -7,7 +7,7 @@
 package tests
 
 import (
-	go_fileutil "go-fileutil"
+	go_fileutil "github.com/ComingCL/go-fileutil"
 	"testing"
 )
 
